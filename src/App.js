@@ -3,8 +3,10 @@ import { Component } from "react";
 import ContactList from "./components/ContactList";
 import ContactForm from "./components/ContactForm";
 import Filter from "./components/Filters";
+import contactActions from ".././src/redux/contact/contact-actions";
 
 import "./App.scss";
+import { connect } from "react-redux";
 
 class App extends Component {
   state = {
@@ -12,31 +14,31 @@ class App extends Component {
     filter: "",
   };
 
-  handleSubmitForm = (contact) => {
+  handleSubmitForm = (contact, contacts, name) => {
     this.setState(({ contacts }) => ({
       contacts: [...contacts, contact],
     }));
+    //   const checked = !!contacts.find((contact) => contact.name === name);
+
+    //   checked && alert(`${name} is already in contacts`);
+    //  return !checked;
   };
 
-  checkContact = (name) => {
-    const { contacts } = this.state;
+  // checkContact = ({name}) => {
+  //   const { contacts } = this.state;
+  //   console.log(contacts)
 
-    const checked = !!contacts.find((contact) => contact.name === name);
+  //   const checked = !!contacts.find((contact) => contact.name === name);
 
-    checked && alert(`${name} is already in contacts`);
-    return !checked;
-  };
+  //   checked && alert(`${name} is already in contacts`);
+  //  return !checked;
+  // };
 
   render() {
-    const { contacts } = this.state;
-
     return (
       <div className="Phonebook">
         <h1 className="Phonebook-title">Phonebook</h1>
-        <ContactForm
-          onSubmit={this.handleSubmitForm}
-          check={this.checkContact}
-        />
+        <ContactForm  />
         <h2>Contacts</h2>
 
         <Filter />
@@ -47,4 +49,9 @@ class App extends Component {
   }
 }
 
+// const mapStateToProps = (state) => ({
+//   contacts: contactActions.addContacts(state),
+// });
+
+// export default connect(mapStateToProps)(App);
 export default App;

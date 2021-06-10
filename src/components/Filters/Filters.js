@@ -7,7 +7,7 @@ import contactActions from '../../redux/contact/contact-actions'
 const Filter = ({ filter, changeFilter }) => {
   return (
     <>
-        <h3> Find contacts by me </h3>
+      <h3> Find contacts by me </h3>
       <input className="Input-Filter"
         type="text"
         name=''
@@ -28,7 +28,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  changeFilter: (e) => dispatch(contactActions.changeFilter(e.target.value)),
+  changeFilter: e => dispatch(contactActions.changeFilter(e.target.value)),
 });
 
 export default connect(mapStateToProps,mapDispatchToProps)(Filter);
