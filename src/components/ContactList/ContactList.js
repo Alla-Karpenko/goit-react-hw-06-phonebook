@@ -24,7 +24,6 @@ const ContactList = ({ contacts, onRemoveContact }) => {
                 />
             ))}
         </ul>
-
     )
 };
 

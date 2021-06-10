@@ -3,10 +3,8 @@ import { Component } from "react";
 import ContactList from "./components/ContactList";
 import ContactForm from "./components/ContactForm";
 import Filter from "./components/Filters";
-import contactActions from ".././src/redux/contact/contact-actions";
 
 import "./App.scss";
-import { connect } from "react-redux";
 
 class App extends Component {
   state = {
@@ -14,25 +12,11 @@ class App extends Component {
     filter: "",
   };
 
-  handleSubmitForm = (contact, contacts, name) => {
+  handleSubmitForm = (contact) => {
     this.setState(({ contacts }) => ({
       contacts: [...contacts, contact],
     }));
-    //   const checked = !!contacts.find((contact) => contact.name === name);
-
-    //   checked && alert(`${name} is already in contacts`);
-    //  return !checked;
   };
-
-  // checkContact = ({name}) => {
-  //   const { contacts } = this.state;
-  //   console.log(contacts)
-
-  //   const checked = !!contacts.find((contact) => contact.name === name);
-
-  //   checked && alert(`${name} is already in contacts`);
-  //  return !checked;
-  // };
 
   render() {
     return (
@@ -49,9 +33,4 @@ class App extends Component {
   }
 }
 
-// const mapStateToProps = (state) => ({
-//   contacts: contactActions.addContacts(state),
-// });
-
-// export default connect(mapStateToProps)(App);
 export default App;

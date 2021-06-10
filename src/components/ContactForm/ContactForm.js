@@ -12,47 +12,28 @@ class ContactForm extends Component {
   handleSubmitForm = (e) => {
     e.preventDefault();
     const { onSubmit, contacts } = this.props;
-    const { name, number } = this.state;
-    //    console.log(contacts);
-      
-      if (!name) {
-        return;
-      }
+      const { name, number } = this.state;
 
-        if (
-          contacts.some(
-            (contact) => contact.name.toLowerCase() === name.toLowerCase()
-          )
-        ) {
-          alert(`${name} is already in contacts`);
-          return;
+        if (!name) {
+            return;
         }
-    // const isValidateForm = this.validateForm();
-    // if (!isValidateForm) return; 
-    onSubmit(name, number);
+        if (
+            contacts.some(
+            (contact) => contact.name.toLowerCase() === name.toLowerCase()
+            )
+        ) {
+            alert(`${name} is already in contacts`);
+            return;
+        }
 
-    this.setState({ name: "", number: "" });
+      onSubmit(name, number);
+      this.setState({ name: "", number: "" }); 
   };
 
   handleChange = (e) => {
     const { name, value } = e.currentTarget;
     this.setState({ [name]: value });
   };
-
-//   validateForm = (name, contacts) => {
-//     if (!name) {
-//       return;
-//     }
-
-//     if (
-//       contacts.some(
-//         (contact) => contact.name.toLowerCase() === name.toLowerCase()
-//       )
-//     ) {
-//       alert(`${name} is already in contacts`);
-//       return;
-//     }
-//   };
 
   render() {
     return (
@@ -94,8 +75,8 @@ class ContactForm extends Component {
   }
 };
 
-const mapStateToProps = (state, props) => ({
-  contacts: state.contacts,
+const mapStateToProps = state => ({
+  contacts: state.contacts.items,
 });
 
 const mapDispatchToProps = dispatch => ({
